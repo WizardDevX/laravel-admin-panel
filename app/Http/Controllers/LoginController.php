@@ -14,10 +14,16 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         $remember = $request->boolean($request->remember);
 
-
-
         if (Auth::attempt($credentials, $remember)) return redirect()->intended('/dashboard');
 
         return view('index', ['error' => 'Credenciales Incorrectas.']);
+    }
+
+    public function logout(Request $request)
+    {
+
+        Auth::logout();
+
+        return redirect('/');
     }
 }

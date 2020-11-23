@@ -6179,6 +6179,10 @@ readers do not read off random characters that represent icons */
   margin-bottom: 2rem;
 }
 
+.form__group:last-child {
+  margin-bottom: 1rem;
+}
+
 .form__label {
   position: absolute;
   bottom: 20%;
@@ -6226,6 +6230,14 @@ readers do not read off random characters that represent icons */
   align-items: center;
   justify-content: flex-start;
   gap: 5px;
+}
+
+.error {
+  display: inline-block;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  color: #e45252;
+  margin-bottom: 1rem;
 }
 
 html {

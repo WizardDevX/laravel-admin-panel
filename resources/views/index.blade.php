@@ -12,9 +12,6 @@
 
 <body>
     <div class="form-wrapper">
-        @if ($error)
-        <h1>{{ $error }}</h1>
-        @endif
         <form action="/api/login" class="form" method="POST">
             @csrf
             <h1 class="form__title">Admin Login</h1>
@@ -30,6 +27,9 @@
                 <input type="checkbox" name="remember" id="remember" checked>
                 <label for="remember">Recordarme</label>
             </div>
+            @isset ($error)
+            <span class="error">{{ $error }}</span>
+            @endisset
             <button type="submit" class="form__button">Ingresar</button>
         </form>
     </div>

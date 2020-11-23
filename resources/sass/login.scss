@@ -1,3 +1,7 @@
+$background: #e0dede;
+$color-blue: #4d4dff;
+$red-error: #e45252;
+
 .form-wrapper {
     height: 100vh;
     width: 100%;
@@ -5,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e0dede;
+    background-color: $background;
 }
 
 .form {
@@ -14,9 +18,9 @@
     min-width: 250px;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba($color: #000000, $alpha: 0.3);
+    box-shadow: 0 0 20px rgba(#000000, 0.3);
     font-family: sans-serif;
-    color: darken($color: #e0dede, $amount: 40);
+    color: darken($background, 40);
 }
 
 .form__title {
@@ -33,6 +37,10 @@
     margin-bottom: 2rem;
 }
 
+.form__group:last-child {
+    margin-bottom: 1rem;
+}
+
 .form__label {
     position: absolute;
     bottom: 20%;
@@ -46,7 +54,7 @@
     width: 100%;
     border: none;
     outline: none;
-    border-bottom: 2px solid darken($color: #e0dede, $amount: 40);
+    border-bottom: 2px solid darken($background, 40);
     padding: 1rem 0 0.5rem;
 }
 
@@ -67,12 +75,12 @@
     border-radius: 30px;
     border: none;
     outline: none;
-    background-color: #4d4dff;
+    background-color: $color-blue;
     transition: background-color .3s;
 }
 
 .form__button:hover {
-    background-color: darken($color: #4d4dff, $amount: 15);
+    background-color: darken($color-blue, 15);
 }
 
 .flex {
@@ -80,4 +88,12 @@
     align-items: center;
     justify-content: flex-start;
     gap: 5px;
+}
+
+.error {
+    display: inline-block;
+    font-size: 1rem;
+    letter-spacing: .1rem;
+    color: $red-error;
+    margin-bottom: 1rem;
 }
