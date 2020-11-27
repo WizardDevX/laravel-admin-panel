@@ -4,8 +4,20 @@
 
 <body>
     @yield('content')
+    <script>
+        const inputs = document.querySelectorAll('.form__input');
 
-    @include('includes.footer')
+        inputs.forEach(input => {
+            input.addEventListener('change', function(e) {
+
+                if (this.value === "") {
+                    this.nextElementSibling.classList.remove('active');
+                } else {
+                    this.nextElementSibling.classList.add('active');
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

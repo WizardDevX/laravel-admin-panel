@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Psy\TabCompletion\AutoCompleter;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,22 @@ use Psy\TabCompletion\AutoCompleter;
 
 Route::get('/', function () {
     return view('index');
-})->name('login')->middleware('guest');
+})->name('login');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+/* Dashboard Routes */
+
+Route::get('/dashboard', [UserController::class, 'getUsers']);
+
+Route::get('/dashboard/add', function (Request $request) {
+    return view('admin.addUser');
 });
+
+Route::post('/dashboard/add', [UserController::class, 'createUser']);
+
+Route::get('/dashboard/update/{id}', [UserController::class, 'updateUserView']);
+
+Route::put('/dashboard/update/{id}', [UserController::class, 'updateUser']);
+
+Route::get('/dashboard/delete/{id}', [UserController::class, 'deleteUser']);
+
+/* Dashboard Routes */

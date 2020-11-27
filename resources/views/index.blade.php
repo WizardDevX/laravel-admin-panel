@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="form-wrapper">
+    <div class="form__wrapper">
         <form action="/api/login" class="form" method="POST">
             @csrf
             <h1 class="form__title">Admin Login</h1>
