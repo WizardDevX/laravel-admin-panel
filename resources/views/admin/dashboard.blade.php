@@ -60,7 +60,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/dashboard/logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -85,7 +85,7 @@
             <h3 class="users__title">Lista de Usuarios</h3>
             <div class="filter">
                 <span>Filtrar:</span>
-                <a href="/dashboard/nombre" class="button__filter">Nombre</a>
+                <a href="/dashboard/name" class="button__filter">Nombre</a>
             </div>
 
             <div class="table__responsive">
@@ -102,8 +102,8 @@
                         @isset($users)
                         @foreach ($users as $user)
                         <tr>
-                            <td>{{ $user->nombre }}</td>
-                            <td>{{ $user->correo }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
                             <td>
                                 <a href={{  '/dashboard/update/' . $user->id }} class="button__warning">
                                     <i class="fas fa-check"></i>

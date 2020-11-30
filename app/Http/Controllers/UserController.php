@@ -14,12 +14,12 @@ class UserController extends Controller
     {
 
         $validatedData = $request->validate([
-            'nombre' => ['required'],
-            'correo' => ['required', 'unique:users'],
-            'contraseña' => ['required', 'min:8']
+            'name' => ['required'],
+            'email' => ['required', 'unique:users'],
+            'password' => ['required', 'min:8']
         ]);
 
-        $validatedData['contraseña'] = Hash::make($validatedData['contraseña']);
+        $validatedData['password'] = Hash::make($validatedData['password']);
 
         $user = array_merge($validatedData, [
             'email_verified_at' => now(),
@@ -43,16 +43,16 @@ class UserController extends Controller
     {
 
         $validatedData = $request->validate([
-            'nombre' => ['required'],
-            'correo' => ['required', 'unique:users,correo,' . $user->id . ',id'],
-            'contraseña' => ['required', 'min:8']
+            'name' => ['required'],
+            'email' => ['required', 'unique:users,email,' . $user->id . ',id'],
+            'password' => ['required', 'min:8']
         ]);
 
-        $validatedData['contraseña'] = Hash::make($validatedData['contraseña']);
+        $validatedData['password'] = Hash::make($validatedData['password']);
 
-        $user->nombre = $validatedData['nombre'];
-        $user->correo = $validatedData['correo'];
-        $user->contraseña = $validatedData['contraseña'];
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = $validatedData['password'];
 
         $user->save();
 
@@ -62,8 +62,8 @@ class UserController extends Controller
     public function getUsers($order = null)
     {
 
-        if ($order == 'nombre') {
-            $users = User::where('role', 'USER')->orderBy('nombre', 'ASC')->paginate(10);
+        if ($order == 'name') {
+            $users = User::where('role', 'USER')->orderBy('name', 'ASC')->paginate(10);
         } else {
             $users = User::where('role', 'USER')->paginate(10);
         }

@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-//use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 
 class User extends Authenticatable
 {
@@ -12,17 +12,17 @@ class User extends Authenticatable
 
     function getAuthIdentifier()
     {
-        return $this->correo;
+        return $this->email;
     }
 
     function getAuthIdentifierName()
     {
-        return 'correo';
+        return 'email';
     }
 
     function getAuthPassword()
     {
-        return $this->contraseña;
+        return $this->password;
     }
 
     function getRememberToken()
@@ -48,7 +48,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'correo', 'contraseña', 'email_verified_at', 'role'
+        'name', 'email', 'password', 'email_verified_at', 'role'
     ];
 
     /**
@@ -57,7 +57,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'contraseña', 'remember_token',
+        'password', 'remember_token',
     ];
 
     /**
@@ -68,4 +68,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
+    }
 }

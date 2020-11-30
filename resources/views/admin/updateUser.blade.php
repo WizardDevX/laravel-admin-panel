@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta nombre="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -17,24 +17,24 @@
             @csrf
             <h1 class="form__title">Actualizar Usuario</h1>
             <div class="form__group">
-                <input type="text" name="nombre" id="nombre" class="form__input" value={{ $user->nombre }}>
-                <label for="nombre" class="form__label active" id="label__nombre">Nombre</label>
+                <input type="text" name="name" id="name" class="form__input" value={{ $user->name }}>
+                <label for="name" class="form__label active" id="label__name">Nombre</label>
             </div>
-            @error('nombre')
+            @error('name')
             <span class="error">{{ $message }}</span>
             @enderror
             <div class="form__group">
-                <input type="email" name="correo" id="correo" class="form__input" value={{ $user->correo }}>
-                <label for="correo" class="form__label active" id="label__correo">Correo</label>
+                <input type="email" name="email" id="email" class="form__input" value={{ $user->email }}>
+                <label for="email" class="form__label active" id="label__email">Correo</label>
             </div>
-            @error('correo')
+            @error('email')
             <span class="error">{{ $message }}</span>
             @enderror
             <div class="form__group">
-                <input type="password" name="contraseña" id="contraseña" class="form__input">
-                <label for="contraseña" class="form__label active" id="label__contraseña">Nueva Contraseña</label>
+                <input type="password" name="password" id="password" class="form__input">
+                <label for="password" class="form__label active" id="label__password">Nueva Contraseña</label>
             </div>
-            @error('contraseña')
+            @error('password')
             <span class="error">{{ $message }}</span>
             @enderror
             <button type="submit" class="form__button">Agregar</button>

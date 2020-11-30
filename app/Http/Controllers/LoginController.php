@@ -12,7 +12,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-        $credentials = array_merge($request->only('correo', 'contraseña'), ['role' => 'ADMIN']);
+        $credentials = array_merge($request->only('email', 'password'), ['role' => 'ADMIN']);
         $remember = $request->boolean($request->remember);
 
         if (Auth::attempt($credentials, $remember)) return redirect()->intended('/dashboard');

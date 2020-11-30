@@ -12,25 +12,17 @@
 
 <body>
     <div class="form__wrapper">
-        <form action="/login" class="form" method="POST">
+        <form action="/forgotPassword" class="form" method="POST">
             @csrf
-            <h1 class="form__title">Admin Login</h1>
+            <h1 class="form__title">Recuperar Contraseña</h1>
             <div class="form__group">
                 <input type="email" name="email" id="email" class="form__input">
                 <label for="email" class="form__label" id="label__email">Email</label>
             </div>
-            <div class="form__group">
-                <input type="password" name="password" id="password" class="form__input">
-                <label for="password" class="form__label" id="label__password">Contraseña</label>
-            </div>
-            <div class="form__group flex">
-                <input type="checkbox" name="remember" id="remember" checked>
-                <label for="remember">Recordarme</label>
-            </div>
-            @isset ($error)
-            <span class="error">{{ $error }}</span>
-            @endisset
-            <button type="submit" class="form__button">Ingresar</button>
+            @error('email')
+            <span class="error">{{ $message }}</span>
+            @enderror
+            <button type="submit" class="form__button">Enviar</button>
         </form>
     </div>
 </body>
