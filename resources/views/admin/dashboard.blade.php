@@ -18,7 +18,7 @@
                 <a href=""><span></span><span></span></a>
             </li>
             <li>
-                <a href="#">
+                <a href="/dashboard">
                     <i class="fas fa-home"></i>
                     <span>Home</span>
                 </a>
@@ -82,7 +82,11 @@
 
         <section class="users">
 
-            <h3 class="users__title">Usuarios</h3>
+            <h3 class="users__title">Lista de Usuarios</h3>
+            <div class="filter">
+                <span>Filtrar:</span>
+                <a href="/dashboard/nombre" class="button__filter">Nombre</a>
+            </div>
 
             <div class="table__responsive">
                 <table>
@@ -111,10 +115,10 @@
                             </td>
                         </tr>
                         @endforeach
-                        {{ $users->links() }}
                         @endisset
                     </tbody>
                 </table>
+                {{ $users->links('vendor.pagination.simple-default') }}
             </div>
 
         </section>

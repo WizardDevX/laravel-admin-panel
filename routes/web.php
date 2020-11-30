@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 
 /*
@@ -16,24 +16,37 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('login');
+/* Login */
+
+Route::middleware(['web', 'guest'])->group(function () {
+    Route::get('/', function () {
+        return view('index');
+    })->name('login');
+
+    Route::post('/login', [LoginController::class, 'login']);
+});
+
+/* Login */
 
 /* Dashboard Routes */
 
-Route::get('/dashboard', [UserController::class, 'getUsers']);
+Route::middleware(['web', 'auth:web'])->prefix('dashboard')->group(function () {
 
-Route::get('/dashboard/add', function (Request $request) {
-    return view('admin.addUser');
+    Route::get('add', function () {
+        return view('admin.addUser');
+    });
+
+    Route::get('{order?}', [UserController::class, 'getUsers']);
+
+    Route::post('add', [UserController::class, 'createUser'])->name('add');
+
+    Route::get('update/{id}', [UserController::class, 'updateUserView']);
+
+    Route::put('update/{id}', [UserController::class, 'updateUser'])->name('update');
+
+    Route::get('delete/{id}', [UserController::class, 'deleteUser'])->name('delete');
 });
 
-Route::post('/dashboard/add', [UserController::class, 'createUser']);
 
-Route::get('/dashboard/update/{id}', [UserController::class, 'updateUserView']);
-
-Route::put('/dashboard/update/{id}', [UserController::class, 'updateUser']);
-
-Route::get('/dashboard/delete/{id}', [UserController::class, 'deleteUser']);
 
 /* Dashboard Routes */

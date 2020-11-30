@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-
 class UserController extends Controller
 {
 
@@ -35,25 +34,21 @@ class UserController extends Controller
         return redirect('/dashboard');
     }
 
-    public function updateUserView($id)
+    public function updateUserView(User $user)
     {
-        $user = User::firstWhere('id', $id);
-
         return view('admin.updateUser', ['user' => $user]);
     }
 
-    public function updateUser(Request $request, $id)
+    public function updateUser(Request $request, User $user)
     {
 
         $validatedData = $request->validate([
             'nombre' => ['required'],
-            'correo' => ['required', 'unique:users'],
+            'correo' => ['required', 'unique:users,correo,' . $user->id . ',id'],
             'contraseña' => ['required', 'min:8']
         ]);
 
         $validatedData['contraseña'] = Hash::make($validatedData['contraseña']);
-
-        $user = User::firstWhere('id', $id);
 
         $user->nombre = $validatedData['nombre'];
         $user->correo = $validatedData['correo'];
@@ -64,16 +59,21 @@ class UserController extends Controller
         return redirect('/dashboard');
     }
 
-    public function getUsers()
+    public function getUsers($order = null)
     {
-        $users = User::where('role', 'USER')->simplePaginate(10);
+
+        if ($order == 'nombre') {
+            $users = User::where('role', 'USER')->orderBy('nombre', 'ASC')->paginate(10);
+        } else {
+            $users = User::where('role', 'USER')->paginate(10);
+        }
 
         return view('admin.dashboard', ['users' => $users]);
     }
 
-    public function deleteUser($id)
+    public function deleteUser(User $user)
     {
-        User::destroy($id);
+        $user->delete();
 
         return redirect('/dashboard');
     }

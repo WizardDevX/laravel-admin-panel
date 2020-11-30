@@ -12,16 +12,16 @@
 
 <body>
     <div class="form__wrapper">
-        <form action="/api/login" class="form" method="POST">
+        <form action="/login" class="form" method="POST">
             @csrf
             <h1 class="form__title">Admin Login</h1>
             <div class="form__group">
-                <input type="email" name="email" id="email" class="form__input">
-                <label for="email" class="form__label" id="label__email">Email</label>
+                <input type="email" name="correo" id="correo" class="form__input">
+                <label for="correo" class="form__label" id="label__correo">Email</label>
             </div>
             <div class="form__group">
-                <input type="password" name="password" id="password" class="form__input">
-                <label for="password" class="form__label" id="label__password">Contraseña</label>
+                <input type="password" name="contraseña" id="contraseña" class="form__input">
+                <label for="contraseña" class="form__label" id="label__contraseña">Contraseña</label>
             </div>
             <div class="form__group flex">
                 <input type="checkbox" name="remember" id="remember" checked>

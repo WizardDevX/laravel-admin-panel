@@ -2,9 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\LoginController;
-use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +17,3 @@ use Illuminate\Support\Facades\Redirect;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('/register', [UserController::class, 'createUser']);
-
-Route::post('/login', [LoginController::class, 'login']);
-
-Route::get('logout', [LoginController::class, 'logout']);
