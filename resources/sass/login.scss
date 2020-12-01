@@ -1,6 +1,7 @@
 $background: #e0dede;
-$color-blue: #4d4dff;
-$red-error: #e45252;
+$info: #4d4dff;
+$error: #e45252;
+$success: #31b83c;
 
 .form__wrapper {
     height: 100vh;
@@ -37,7 +38,7 @@ $red-error: #e45252;
     margin-bottom: 2rem;
 }
 
-.form__group:last-child {
+.form__group:last-of-type {
     margin-bottom: 1rem;
 }
 
@@ -75,12 +76,20 @@ $red-error: #e45252;
     border-radius: 30px;
     border: none;
     outline: none;
-    background-color: $color-blue;
+    background-color: $info;
     transition: background-color .3s;
 }
 
+.form__link {
+    display: block;
+    color: $info;
+    font-size: .9rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
 .form__button:hover {
-    background-color: darken($color-blue, 15);
+    background-color: darken($info, 15);
 }
 
 .flex {
@@ -90,10 +99,19 @@ $red-error: #e45252;
     gap: 5px;
 }
 
-.error {
+.message {
     display: inline-block;
     font-size: 1rem;
     letter-spacing: .1rem;
-    color: $red-error;
     margin-bottom: 1rem;
+
+    &__error {
+        @extend .message;
+        color: $error;
+    }
+
+    &__success {
+        @extend .message;
+        color: $success;
+    }
 }

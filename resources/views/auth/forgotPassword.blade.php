@@ -15,13 +15,17 @@
         <form action="/forgotPassword" class="form" method="POST">
             @csrf
             <h1 class="form__title">Recuperar Contraseña</h1>
+            @if (Session::has('status'))
+            <span class="message__success">{{ Session::get('status') }}</span>
+            @endif
             <div class="form__group">
                 <input type="email" name="email" id="email" class="form__input">
-                <label for="email" class="form__label" id="label__email">Email</label>
+                <label for="email" class="form__label" id="label__email">Correo</label>
             </div>
             @error('email')
-            <span class="error">{{ $message }}</span>
+            <span class="message__error">{{ $message }}</span>
             @enderror
+            <a href="/" class="form__link">Volver al login</a>
             <button type="submit" class="form__button">Enviar</button>
         </form>
     </div>

@@ -36,9 +36,8 @@ Route::middleware(['web', 'guest'])->group(function () {
     Route::get('forgotPassword', [PasswordController::class, 'getForgotPassword'])->name('password.request');
     Route::post('forgotPassword', [PasswordController::class, 'forgotPassword'])->name('password.email');
 
-    Route::get('resetPassword', [PasswordController::class, 'getResetPassword'])->name('password.reset');
+    Route::get('resetPassword/{token}', [PasswordController::class, 'getResetPassword'])->name('password.reset');
     Route::post('resetPassword', [PasswordController::class, 'resetPassword'])->name('password.update');
-    
 });
 
 /* Reset Password */
@@ -47,13 +46,13 @@ Route::middleware(['web', 'guest'])->group(function () {
 /* Dashboard Routes */
 
 Route::middleware(['web', 'auth'])->prefix('dashboard')->group(function () {
-    
+
     Route::get('logout', [LoginController::class, 'logout']);
 
     Route::get('add', function () {
         return view('admin.addUser');
     });
-    
+
     Route::get('{order?}', [UserController::class, 'getUsers']);
 
     Route::post('add', [UserController::class, 'createUser'])->name('add');
@@ -63,6 +62,5 @@ Route::middleware(['web', 'auth'])->prefix('dashboard')->group(function () {
     Route::put('update/{id}', [UserController::class, 'updateUser'])->name('update');
 
     Route::get('delete/{id}', [UserController::class, 'deleteUser'])->name('delete');
-    
 });
 /* Dashboard Routes */

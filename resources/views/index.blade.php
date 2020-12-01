@@ -15,21 +15,31 @@
         <form action="/login" class="form" method="POST">
             @csrf
             <h1 class="form__title">Admin Login</h1>
+            @if (Session::has('status'))
+            <span class="message__success">{{ Session::get('status') }}</span>
+            @endif
             <div class="form__group">
                 <input type="email" name="email" id="email" class="form__input">
-                <label for="email" class="form__label" id="label__email">Email</label>
+                <label for="email" class="form__label" id="label__email">Correo</label>
             </div>
+            @error ('email')
+            <span class="message__error">{{ $message }}</span>
+            @enderror
             <div class="form__group">
                 <input type="password" name="password" id="password" class="form__input">
                 <label for="password" class="form__label" id="label__password">Contraseña</label>
             </div>
+            @error ('password')
+            <span class="message__error">{{ $message }}</span>
+            @enderror
             <div class="form__group flex">
                 <input type="checkbox" name="remember" id="remember" checked>
                 <label for="remember">Recordarme</label>
             </div>
-            @isset ($error)
-            <span class="error">{{ $error }}</span>
-            @endisset
+            @error ('credentials')
+            <span class="message__error">{{ $message }}</span>
+            @enderror
+            <a href="/forgotPassword" class="form__link">¿Olvido su contraseña?</a>
             <button type="submit" class="form__button">Ingresar</button>
         </form>
     </div>

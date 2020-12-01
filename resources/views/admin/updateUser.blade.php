@@ -21,21 +21,21 @@
                 <label for="name" class="form__label active" id="label__name">Nombre</label>
             </div>
             @error('name')
-            <span class="error">{{ $message }}</span>
+            <span class="message__error">{{ $message }}</span>
             @enderror
             <div class="form__group">
                 <input type="email" name="email" id="email" class="form__input" value={{ $user->email }}>
                 <label for="email" class="form__label active" id="label__email">Correo</label>
             </div>
             @error('email')
-            <span class="error">{{ $message }}</span>
+            <span class="message__error">{{ $message }}</span>
             @enderror
             <div class="form__group">
                 <input type="password" name="password" id="password" class="form__input">
                 <label for="password" class="form__label active" id="label__password">Nueva Contraseña</label>
             </div>
             @error('password')
-            <span class="error">{{ $message }}</span>
+            <span class="message__error">{{ $message }}</span>
             @enderror
             <button type="submit" class="form__button">Agregar</button>
         </form>

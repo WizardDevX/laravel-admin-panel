@@ -11,13 +11,17 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $validatedData = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required', 'min:8']
+        ]);
 
-        $credentials = array_merge($request->only('email', 'password'), ['role' => 'ADMIN']);
+        $credentials = array_merge($validatedData, ['role' => 'ADMIN']);
         $remember = $request->boolean($request->remember);
 
         if (Auth::attempt($credentials, $remember)) return redirect()->intended('/dashboard');
 
-        return view('index', ['error' => 'Credenciales Incorrectas.']);
+        return view('index')->withErrors(['credentials' => 'Credenciales Incorrectas.']);
     }
 
     public function logout()
