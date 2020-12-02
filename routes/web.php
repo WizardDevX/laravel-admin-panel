@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,8 @@ Route::middleware(['web', 'auth'])->prefix('dashboard')->group(function () {
         return view('admin.addUser');
     });
 
+    Route::get('profile', [UserController::class, 'profile'])->name('profile');
+
     Route::get('{order?}', [UserController::class, 'getUsers']);
 
     Route::post('add', [UserController::class, 'createUser'])->name('add');
@@ -64,3 +67,10 @@ Route::middleware(['web', 'auth'])->prefix('dashboard')->group(function () {
     Route::get('delete/{id}', [UserController::class, 'deleteUser'])->name('delete');
 });
 /* Dashboard Routes */
+
+/* PDF */
+Route::middleware(['web', 'auth'])->prefix('pdf')->group(function () {
+
+    Route::get('/', [PdfController::class, 'getPdf']);
+});
+/* PDF */

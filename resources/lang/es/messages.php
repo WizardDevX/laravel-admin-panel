@@ -2,5 +2,7 @@
 
 return [
     'Hello!' => 'Hola!',
-    'Regards' => 'Saludos'
+    'Regards' => 'Saludos',
+    'USER' => 'USUARIO',
+    'ADMIN' => 'ADMINISTRADOR'
 ];

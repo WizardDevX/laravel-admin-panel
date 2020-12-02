@@ -15,7 +15,7 @@
         <form action={{ "/dashboard/update/" . $user->id }} class="form" method="POST">
             @method('PUT')
             @csrf
-            <h1 class="form__title">Actualizar Usuario</h1>
+            <h1 class="form__title">Actualizar Cuenta</h1>
             <div class="form__group">
                 <input type="text" name="name" id="name" class="form__input" value={{ $user->name }}>
                 <label for="name" class="form__label active" id="label__name">Nombre</label>

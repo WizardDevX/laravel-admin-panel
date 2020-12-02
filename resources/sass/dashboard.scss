@@ -196,6 +196,14 @@ tbody tr:nth-child(2n) {
         background-color: $main-color;
         padding: 0 1rem;
     }
+
+    &__info {
+        @extend .button;
+        width: auto;
+        height: auto;
+        background-color: #4d4dff;
+        padding: 0 1rem;
+    }
 }
 
 .pagination {
@@ -206,7 +214,7 @@ tbody tr:nth-child(2n) {
 
 .filter {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 85px);
+    grid-template-columns: repeat(auto-fit, 140px);
     margin: 2rem;
     gap: 1rem;
 

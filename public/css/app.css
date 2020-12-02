@@ -6423,6 +6423,7 @@ tbody tr:nth-child(2n) {
 }
 
 .button,
+.button__info,
 .button__filter,
 .button__danger,
 .button__warning {
@@ -6453,6 +6454,13 @@ tbody tr:nth-child(2n) {
   padding: 0 1rem;
 }
 
+.button__info {
+  width: auto;
+  height: auto;
+  background-color: #4d4dff;
+  padding: 0 1rem;
+}
+
 .pagination {
   display: flex;
   justify-content: space-around;
@@ -6461,7 +6469,7 @@ tbody tr:nth-child(2n) {
 
 .filter {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 85px);
+  grid-template-columns: repeat(auto-fit, 140px);
   margin: 2rem;
   gap: 1rem;
 }

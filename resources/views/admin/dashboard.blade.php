@@ -32,31 +32,31 @@
             <li>
                 <a href="#">
                     <i class="fas fa-tasks"></i>
-                    <span>Tasks</span>
+                    <span>Tareas</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fas fa-file"></i>
-                    <span>Leaves</span>
+                    <span>Archivos</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fas fa-project-diagram"></i>
-                    <span>Projects</span>
+                    <span>Proyectos</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fas fa-address-book"></i>
-                    <span>Contacts</span>
+                    <span>Contactos</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('profile') }}">
                     <i class="fas fa-cog"></i>
-                    <span>Account</span>
+                    <span>Modificar Cuenta</span>
                 </a>
             </li>
             <li>
@@ -86,6 +86,7 @@
             <div class="filter">
                 <span>Filtrar:</span>
                 <a href="/dashboard/name" class="button__filter">Nombre</a>
+                <a href="/pdf" class="button__info">Exportar a PDF</a>
             </div>
 
             <div class="table__responsive">
